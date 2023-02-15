@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ʟᴏɢᴊs</title>
+    <meta name="title" content="log.js">
+    <meta name="keywords" content="One line code solution front-end log.">
+    <meta name="description" content="One line code solution front-end log. Web Log collection. React, Vue, Jquery">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="icon" href="./images/logo.png">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="./bootstrap.min.js"></script>
+    <script src="https://logjs.site/version/2.0.1/log.min.js"></script>
+    <script src="https://cdn.staticfile.org/marked/0.4.0/marked.min.js"></script>
+    <script src="https://logjs.site/index.js"></script>
+    <style>
+        /*body{*/
+        /*    filter: grayscale(1);*/
+        /*}*/
+        .division{
+            display: inline-block;
+            margin: 13px 3px;
+            height: 20px;
+            border: 1px solid #595959;
+        }
+
+        .user-item{
+            background: #8d9096;
+            margin: 6px;
+            border-radius: 5px;
+            color: #e7e7e7;
+        }
+
+        .robot-item{
+            background: #212529;
+            margin: 6px 6px 20px 6px;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+
+        .chatList{
+            margin: 0 2vh;
+            height: calc(100vh - 19vh);
+            overflow: scroll;
+        }
+        .fixed-bottom{
+            margin: 0 2vh;
+            /*background: #ffffff;*/
+        }
+
+        .bg-secondary{
+            margin: 0 0.4rem;
+            --bs-bg-opacity: 0;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<!--head-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <img src="https://logjs.site/images/logo.png" alt="" style="width: 25px; margin: 0 10px;">
+        <a class="navbar-brand" href="https://logjs.site/">
+            LOGJS
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="https://logjs.site/">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="https://logjs.site/quickStart.html">快速开始</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="https://logjs.site/version/2.0.1/debugTool.html">调试工具</a>
+                </li>
+            </ul>
+
+<!--            <form class="d-flex" role="search">-->
+<!--                <input class="form-control me-2" type="search" placeholder="通过chatGPT寻找答案" aria-label="Search" id="searchInput">-->
+<!--                <button class="btn btn-outline-success" type="submit" id="searchInputBtn">Search</button>-->
+<!--            </form>-->
+
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="https://github.com/fanliang8023/log.js" target="_blank">
+                        <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true">
+                            <path fill="white" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li class="division"></li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="https://gitee.com/clark-fl/log.js" target="_blank">
+                        <img src="https://logjs.site/images/gitee-logo.png" alt="" style="width: 36px;">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--head end-->
+
+<!--<div class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--    <div>1. 当前对话还未实现上下文功能，所以会出现上下文无法连接问题，正在进行补充...</div>-->
+<!--    <div>3. 信息的更优展示也正在补充中...</div>-->
+<!--    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--</div>-->
+
+
+<div class="chatList" id="chatList">
+
+
+    <div class="fixed-bottom">
+
+        <div class="btn-group btn-group-sm" role="group" aria-label="Small button group" style="background: #ffffff;padding: 8px;border-radius: 3px;">
+            <button type="button" class="btn btn-dark" id="btnradio1">交流</button>
+            <button type="button" class="btn btn-outline-dark" id="btnradio2">图片生成</button>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="请输入您的问题" maxlength="4000">
+            <label for="floatingInput">按下 <kbd>enter</kbd> 发送</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * init
+     * */
+    let actionType = 'answer';
+    let question = '';
+
+
+    function getUrlParameter(url) {
+        url = url == null ? window.location.href : url;
+        let search = url.substring(url.lastIndexOf('?') + 1);
+        let obj = {};
+        let reg = /([^?&=]+)=([^?&=]*)/g;
+        search.replace(reg, function (rs, $1, $2) {
+            let name = decodeURIComponent($1);
+            let val = decodeURIComponent($2);
+            val = String(val);
+            obj[name] = val;
+            return rs;
+        });
+        return obj;
+    }
+
+    const getTime = () => {
+
+        let h = getZero(new Date().getHours());
+        let m = getZero(new Date().getMinutes());
+        let s = getZero(new Date().getSeconds());
+
+        function getZero(num){
+            if(!num) return '00';
+            if(num && num < 10){
+                return `0${num}`;
+            }else{
+                return num;
+            }
+        }
+
+        return `${h}:${m}:${s}`;
+
+    }
+
+    clearToken = () => {
+        document.getElementById('floatingInput').className = 'form-control is-invalid';
+        localStorage.setItem('logjs_t', null);
+        makeMeItem('鉴权码已清空');
+    }
+
+
+    log.init({ id: 'robot-chat', sendAddress: 'https://logjs.site/log-war/log' });
+
+
+</script>
+
+<script>
+    /**
+     * render
+     * */
+
+    //生成"我"消息
+    const makeMeItem = q => {
+        let chatListNode = document.getElementById('chatList');
+        let itemNode = document.createElement('div');
+
+        let innerNode = document.createElement('div');
+
+        let tagNode = document.createElement('span');
+
+        let textNode = document.createElement('span');
+
+        itemNode.className = 'user-item';
+        innerNode.className = 'text-bg-primary p-3';
+        tagNode.className = 'badge text-bg-primary';
+
+        tagNode.style.background = '#5167e9';
+
+        tagNode.innerText = '我';
+
+        let tagNode1 = document.createElement('span');
+        tagNode1.className = 'badge bg-secondary';
+        tagNode1.innerText = getTime();
+
+        textNode.innerHTML = q;
+
+        innerNode.appendChild(tagNode);
+
+        innerNode.appendChild(tagNode1);
+
+        innerNode.appendChild(textNode);
+
+        itemNode.appendChild(innerNode);
+        chatListNode.appendChild(itemNode);
+
+        document.getElementById('chatList').scrollTop = document.getElementById('chatList').scrollHeight;
+    }
+
+    //生成"robot"消息
+    const makeChatGPTItem = a => {
+        let chatListNode = document.getElementById('chatList');
+        let itemNode = document.createElement('div');
+
+        let innerNode = document.createElement('div');
+
+        let tagNode = document.createElement('span');
+
+        let textNode = document.createElement('span');
+
+        let tagNode1 = document.createElement('span');
+        tagNode1.className = 'badge bg-secondary';
+        tagNode1.innerText = getTime();
+
+        itemNode.className = 'robot-item';
+        innerNode.className = 'text-bg-dark p-3';
+        tagNode.className = 'badge text-bg-primary';
+        tagNode.style.background = '#cd3333';
+
+        tagNode.innerText = 'openai';
+        let html_text = marked(a);
+        textNode.innerHTML = html_text;
+
+        innerNode.appendChild(tagNode);
+
+        innerNode.appendChild(tagNode1);
+
+        innerNode.appendChild(textNode);
+
+        itemNode.appendChild(innerNode);
+        chatListNode.appendChild(itemNode);
+
+        document.getElementById('chatList').scrollTop = document.getElementById('chatList').scrollHeight;
+        document.getElementById('floatingInput').focus();
+    }
+
+    //生成"robot image"消息
+    const makeChatGPTImageItem = image => {
+        let chatListNode = document.getElementById('chatList');
+        let itemNode = document.createElement('div');
+
+        let innerNode = document.createElement('div');
+
+        let tagNode = document.createElement('span');
+
+        let textNode = document.createElement('span');
+
+        let tagNode1 = document.createElement('span');
+        tagNode1.className = 'badge bg-secondary';
+        tagNode1.innerText = getTime();
+
+        itemNode.className = 'robot-item';
+        innerNode.className = 'text-bg-dark p-3';
+        tagNode.className = 'badge text-bg-primary';
+        tagNode.style.background = '#cd3333';
+
+        tagNode.innerText = 'openai';
+        textNode.innerHTML = `<img src="${image}" style="width: 512px"/>`;
+
+        innerNode.appendChild(tagNode);
+
+        innerNode.appendChild(tagNode1);
+
+        innerNode.appendChild(textNode);
+
+        itemNode.appendChild(innerNode);
+        chatListNode.appendChild(itemNode);
+
+        document.getElementById('chatList').scrollTop = document.getElementById('chatList').scrollHeight;
+        document.getElementById('floatingInput').focus();
+    }
+
+
+</script>
+
+<script>
+    /**
+     * fetch
+     * */
+    const getA = async (q, urlParams) => {
+
+        if(!q) return '您说了什么？我没看到';
+
+        //上下文逻辑
+        question += `${q},`;
+
+        document.getElementById('floatingInput').disabled = true;
+        let href = `https://logjs.site/openai/question?t=${localStorage.getItem('logjs_t')}`;
+
+        if(urlParams){
+            for( let key in urlParams){
+                href += `&${key}=${urlParams[key]}`;
+            }
+        }
+
+        if(!urlParams || !urlParams.q){
+            href += `&q=${question}`;
+        }
+
+        let res = await fetch(href);
+        let res1 = await res.json();
+        document.getElementById('floatingInput').disabled = false;
+        if(res1.status === 200){
+            document.getElementById('floatingInput').className = 'form-control';
+
+            let tempAnswer = res1.answer;
+            return tempAnswer;
+        }else{
+            question = '';
+            localStorage.setItem('logjs_t', null);
+            document.getElementById('floatingInput').className = 'form-control is-invalid';
+            makeMeItem(`无效的鉴权码，请输入有效鉴权码并 按下 <kbd>enter</kbd> 保存，由于现阶段过多流量涌入，补充了鉴权码防刷，如有使用需求，请前往 <a href="https://gitee.com/clark-fl/log.js" target="_blank">issues</a> 处索取鉴权码`);
+        }
+    }
+
+    const getImage = async (q, urlParams) => {
+
+        if(!q) return '您说了什么？我没看到';
+
+        //上下文逻辑
+        question += `${q},`;
+
+        document.getElementById('floatingInput').disabled = true;
+        let href = `https://logjs.site/openai/createImg?t=${localStorage.getItem('logjs_t')}`;
+
+        if(urlParams){
+            for( let key in urlParams){
+                href += `&${key}=${urlParams[key]}`;
+            }
+        }
+
+        if(!urlParams || !urlParams.q){
+            href += `&q=${question}`;
+        }
+
+        let res = await fetch(href);
+        let res1 = await res.json();
+        document.getElementById('floatingInput').disabled = false;
+        if(res1.status === 200){
+            document.getElementById('floatingInput').className = 'form-control';
+            return `data:image/png;base64,${res1.image.b64_json}`;
+        }else{
+
+            question = '';
+            localStorage.setItem('logjs_t', null);
+            document.getElementById('floatingInput').className = 'form-control is-invalid';
+            makeMeItem(`无效的鉴权码，请输入有效鉴权码并 按下 <kbd>enter</kbd> 保存，由于现阶段过多流量涌入，补充了鉴权码防刷，如有使用需求，请前往 <a href="https://gitee.com/clark-fl/log.js" target="_blank">issues</a> 处索取鉴权码`);
+        }
+    }
+
+</script>
+
+<script>
+
+    let urlParams = getUrlParameter();
+    if(urlParams.t){
+        localStorage.setItem('logjs_t', urlParams.t);
+    }
+    //检查token
+    if(!localStorage.getItem('logjs_t') || localStorage.getItem('logjs_t') === 'null'){
+        document.getElementById('floatingInput').className = 'form-control is-invalid';
+        makeMeItem(`请输入鉴权码并 按下 <kbd>enter</kbd> 保存，由于现阶段过多流量涌入，补充了鉴权码防刷，如有使用需求，请前往 <a href="https://gitee.com/clark-fl/log.js" target="_blank">issues</a> 处索取鉴权码`);
+    }else{
+        //如果携带了进入参数，则直接查询
+        if(urlParams.q){
+            makeMeItem(urlParams.q);
+            getA(urlParams.q, urlParams).then(a => {
+                makeChatGPTItem(a);
+            });
+        }
+    }
+
+    document.addEventListener('keyup', async e => {
+        if(event.keyCode == 13){
+            let value = document.getElementById('floatingInput').value;
+
+            //token检查
+            if(!localStorage.getItem('logjs_t') || localStorage.getItem('logjs_t') === 'null'){
+                document.getElementById('floatingInput').className = 'form-control';
+                makeMeItem('鉴权码已保存');
+                document.getElementById('floatingInput').value = '';
+                return localStorage.setItem('logjs_t', value);
+            }
+
+            makeMeItem(value);
+            document.getElementById('floatingInput').value = '';
+
+            let answer = '';
+            if(actionType === 'answer'){
+                answer = await getA(value);
+                makeChatGPTItem(answer);
+            }
+            if(actionType === 'image'){
+                answer = await getImage(value);
+                makeChatGPTImageItem(answer);
+            }
+        }
+    });
+
+    document.getElementById('btnradio1').onclick = e => {
+        document.getElementById('btnradio1').className = `btn btn-dark`;
+        document.getElementById('btnradio2').className = `btn btn-outline-dark`;
+
+        actionType = 'answer';
+    }
+
+    document.getElementById('btnradio2').onclick = e => {
+        document.getElementById('btnradio1').className = `btn btn-outline-dark`;
+        document.getElementById('btnradio2').className = `btn btn-dark`;
+
+        actionType = 'image';
+    }
+
+</script>
+
+</body>
+</html>

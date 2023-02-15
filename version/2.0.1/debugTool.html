@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><link rel="icon" href="https://logjs.site/images/logo.png"><title>log.js调试工具</title><meta name="title" content="log.js"><meta name="keywords" content="One line code solution front-end log."><meta name="description" content="One line code solution front-end log. Web Log collection. React, Vue, Jquery"><link rel="stylesheet" href="https://logjs.site/index.css"><link rel="stylesheet" href="https://logjs.site/bootstrap.min.css"><script src="https://logjs.site/bootstrap.min.js"></script><style>input {
+            padding: 5px 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #cbcbcb;
+            margin: 0 5px;
+            width: 100px;
+        }
+        .label{
+            font-weight: 500;
+            color: #FFFFFF;
+        }
+        .formItem{
+            display: inline-block;
+            padding: 10px;
+        }
+        em{
+            font-size: 12px;
+            color: #929292;
+        }
+        .content{
+            padding: 20px;
+            word-break: break-all;
+            white-space: pre-wrap;
+            color: #919191;
+            background: #242526;
+            border-radius: 5px;
+            overflow-y: scroll;
+            height: 20rem;
+            margin: 10px;
+            font-size: 12px;
+            width: 95%;
+            display: inline-block;
+            text-align: left;
+        }
+        .form{
+            padding: 10px;
+            background: #242526;
+            margin-top: 1px;
+        }
+        .card{
+            border: none;
+            margin: 16px;
+        }
+        .division{
+            display: inline-block;
+            margin: 13px 3px;
+            height: 20px;
+            border: 1px solid #595959;
+        }</style><script defer="defer" src="log.min.js"></script></head><body><div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-bottom: 0"><strong>让我们先初始化 log.js !</strong> 你需要先初始化后 log.js 才可以开始工作 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div><nav class="navbar navbar-expand-lg navbar-dark bg-dark"><div class="container-fluid"><img src="https://logjs.site/images/logo.png" alt="" style="width: 25px; margin: 0 10px;"> <a class="navbar-brand" href="https://logjs.site/">LOGJS </a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav me-auto mb-2 mb-lg-0"><li class="nav-item"><a class="nav-link" aria-current="page" href="https://logjs.site/">首页</a></li><li class="nav-item"><a class="nav-link" aria-current="page" href="https://logjs.site/quickStart.html">快速开始</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" disabled="disabled">调试工具</a></li></ul><form class="d-flex" role="search"><input class="form-control me-2" type="search" placeholder="通过chatGPT寻找答案" aria-label="Search" id="searchInput"> <button class="btn btn-outline-success" type="submit" id="searchInputBtn">Search</button></form><ul class="navbar-nav mb-2 mb-lg-0"><li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/fanliang8023/log.js" target="_blank"><svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true"><path fill="white" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a></li><li class="division"></li><li class="nav-item"><a class="nav-link" aria-current="page" href="https://gitee.com/clark-fl/log.js" target="_blank"><img src="https://logjs.site/images/gitee-logo.png" alt="" style="width: 36px;"></a></li></ul></div></div></nav><div class="form"><div class="formItem"><span class="label">sendAddress <em>发送地址</em> </span><input placeholder="请输入发送地址" id="sendAddress"></div><div class="formItem"><span class="label">degree <em>采样率</em> </span><input type="number" placeholder="请输入采样率" id="degree"></div><div class="formItem"><span class="label">id <em>实例ID</em> </span><input placeholder="请输入实例ID" id="id"></div><div class="formItem"><button type="button" class="btn btn-primary" id="init">初始化</button> <button type="button" class="btn btn-outline-primary" id="setOptions" disabled="disabled">更新设置</button> <button type="button" class="btn btn-outline-primary" id="io" disabled="disabled">IO测试</button> <button type="button" class="btn btn-outline-primary" id="click" disabled="disabled">点击测试</button> <button type="button" class="btn btn-outline-primary" id="error" disabled="disabled">生成错误</button> <button type="button" class="btn btn-outline-primary" id="diy" disabled="disabled">自定义信息测试</button></div></div><div class="row"><div class="col-sm-6"><div class="card"><div class="card-body"><h5 class="card-title">终端信息</h5><p class="card-text content" id="content_terminal_info">尚未初始化 log.js</p></div></div></div><div class="col-sm-6"><div class="card"><div class="card-body"><h5 class="card-title">性能信息</h5><p class="card-text content" id="content_performance_info">尚未初始化 log.js</p></div></div></div></div><div class="row"><div class="col-sm-6"><div class="card"><div class="card-body"><h5 class="card-title">点击信息</h5><p class="card-text content" id="content_click">尚未初始化 log.js</p></div></div></div><div class="col-sm-6"><div class="card"><div class="card-body"><h5 class="card-title">IO信息</h5><p class="card-text content" id="content_io">尚未初始化 log.js</p></div></div></div></div><div class="row"><div class="col-sm-6"><div class="card"><div class="card-body"><h5 class="card-title">自定义信息</h5><p class="card-text content" id="content_diy">尚未初始化 log.js</p></div></div></div><div class="col-sm-6"><div class="card"><div class="card-body"><h5 class="card-title">错误信息</h5><p class="card-text content" id="content_error">尚未初始化 log.js</p></div></div></div></div><script>let sendAddress = 'https://logjs.site/log-war/log';
+    let logType = [ 'error', 'click', 'diy', 'io' ];
+    let degree = 1;
+    let id = 'debug_tool';
+
+    document.getElementById('sendAddress').value = sendAddress;
+    document.getElementById('sendAddress').onchange = e => sendAddress = e.target.value;
+
+    document.getElementById('degree').value = degree;
+    document.getElementById('degree').onchange = e => degree = e.target.value;
+
+    document.getElementById('id').value = id;
+    document.getElementById('id').onchange = e => id = e.target.value;
+
+    function reportingBefore(params){
+        document.getElementById('content_click').innerHTML = JSON.stringify({ click_list: params.click_list }, void 0, ' ');
+        document.getElementById('content_io').innerHTML = JSON.stringify({ io_list: params.io_list }, void 0, ' ');
+        document.getElementById('content_diy').innerHTML = JSON.stringify({ diy_list: params.diy_list }, void 0, ' ');
+        document.getElementById('content_error').innerHTML = JSON.stringify({ error_list: params.error_list }, void 0, ' ');
+        document.getElementById('content_terminal_info').innerHTML = JSON.stringify({ terminal_info: params.terminal_info }, void 0, ' ');
+        document.getElementById('content_performance_info').innerHTML = JSON.stringify({ performance_info: params.performance_info }, void 0, ' ');
+        return params;
+    }
+
+    document.getElementById('setOptions').onclick = function (){
+        window.log.setOptions({ sendAddress, reportingBefore, logType, degree, id });
+    }
+
+    document.getElementById('io').onclick = function (){
+        fetch('/test')
+    }
+
+    document.getElementById('error').onclick = function (){
+        console.log(this_is_a_error);
+    }
+
+    document.getElementById('click').onclick = function (){
+        console.log('A click was triggered');
+    }
+
+    document.getElementById('diy').onclick = function (){
+        window.log.log('A click was triggered', 'debugTool');
+    }
+
+    document.getElementById('init').onclick = function (){
+        log.init({ sendAddress, reportingBefore, logType, degree, id });
+        document.getElementById('setOptions').disabled = false;
+        document.getElementById('io').disabled = false;
+        document.getElementById('click').disabled = false;
+        document.getElementById('diy').disabled = false;
+        document.getElementById('error').disabled = false;
+
+        document.getElementById('init').disabled = true;
+    }</script><script src="https://logjs.site/index.js"></script></body></html>

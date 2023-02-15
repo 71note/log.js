@@ -1,0 +1,234 @@
+    /*公共样式*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #e6e6e6;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+
+/*头部*/
+.header {
+    height: 60px;
+    background-color: #242526;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.header .logo {
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 60px;
+}
+
+.header .logo .logjs {
+    color: #f6f6f6;
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.header .logo img {
+    height: 35px;
+    float: left;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+
+.header .empty {
+    display: inline-block;
+    width: 14%;
+}
+
+.header .item {
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 20px;
+}
+
+
+.header .item .text {
+    color: #e3e3e3;
+    font-size: 20px;
+}
+
+.header .item .text:hover {
+    color: #f6f6f6;
+    cursor: pointer;
+}
+
+
+.header .starArea {
+    display: inline-block;
+    margin: 0 65px;
+    width: 250px;
+    line-height: 60px;
+    float: right;
+    position: relative;
+}
+
+.header .starArea .github-logo{
+    display: inline;
+    position: absolute;
+    top: 8px;
+}
+
+.header .starArea .Header-link .text, svg{
+    color: #e3e3e3;
+}
+.header .starArea .Header-link .text:hover{
+    color: #ffffff;
+}
+
+.header .starArea .gitee-link{
+    position: relative;
+}
+
+.header .starArea .gitee-link .gitee-logo{
+    width: 145px;
+    position: absolute;
+    top: -21px;
+    left: -53px;
+}
+
+.header .starArea .gitee-link .gitee{
+    padding-left: 38px;
+}
+
+.header .starArea .division{
+    display: inline-block;
+    margin: 0 3px;
+    height: 20px;
+    border: 1px solid white;
+}
+
+.header .starArea img {
+    width: 20px;
+    position: absolute;
+    top: 25px;
+}
+
+.header .starArea .star {
+    color: #aeaeae;
+}
+
+.header .starArea .star .starNum {
+    width: 30px;
+    display: inline-block;
+}
+
+
+/*主体*/
+.body {
+    margin: 0 auto;
+    padding-top: 60px;
+    background: rgba(33,37,41);
+    overflow: hidden;
+}
+
+.body .headText{
+    text-align: center;
+    color: #FFFFFF;
+    padding: 5px 0 30px 0;
+    font-size: 3rem;
+}
+
+.body .contentText{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 7rem;
+    font-weight: bold;
+}
+
+    .body .contentText img{
+        width: 5rem;
+    }
+
+.body .versionNum{
+    color: #ffff17;
+}
+
+    .body .footerText{
+        text-align: center;
+        color: #FFFFFF;
+        padding: 30px 0 0 0;
+        font-size: 2rem;
+    }
+
+    .body .howUse{
+        color: #FFFFFF;
+        text-align: center;
+        margin: 100px 0 0 0;
+    }
+
+    .body .border{
+        display: inline-block;
+        padding: 16px 38px;
+        border-radius: 5px;
+        background: #404040;
+        font-size: 16px;
+        font-weight: 500;
+        border: none!important;
+    }
+
+    .body .border a{
+        cursor: pointer;
+        /*margin-left: 10px;*/
+    }
+
+    .body .border a:hover{
+        color: #45dec5;
+    }
+
+    .body .border .t1{
+        color: #f0d500;
+    }
+
+    .body .border .t2{
+        color: #45dec5;
+    }
+
+    .body .border .t3{
+        color: #bcbcbc;
+    }
+
+
+/*底部*/
+.footer {
+    height: 140px;
+    display: none;
+}
+
+.d-flex{
+    margin-right: 10px;
+}
